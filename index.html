@@ -95,6 +95,22 @@
             padding-top: 4%;
             padding-bottom: 2%;
         }
+        #toggle{
+            float: right;
+            margin-top: -50px;
+            margin-right: 6px;
+            font-size: 25px;
+        }
+        .revert{
+            background: black;
+            color: white;
+            transition: 0.3s
+        }
+        .inputrevert{
+            background: #292828;
+            border: none;
+            color: white;
+        }
         
     </style>
     
@@ -104,7 +120,8 @@
     
     <div class="container-fluid">
         <div class="top">
-            <p class="title text-center">Room Locator</p>
+            <p class="title text-center">Room Locator </p>
+            <i class="fas fa-sun" id="toggle"></i>
             <i class="fas fa-arrow-left" onclick="egg()"></i>
         </div>
         
@@ -559,9 +576,50 @@
 
                 
         }
+        //----------night mode
+        
+        let flag=0;//let 0 be for day and 1 for night
+        document.getElementById("toggle").addEventListener("click",function(){
+        if(flag == 0){
+            document.body.classList.add("revert");
+            var inputs = document.querySelectorAll("select")
+            for (var i = 0; i < inputs.length; i++) {
+            inputs[i].classList.add('inputrevert');
+            }
+            // var classes = document.querySelectorAll(".room")
+            // for ( i = 0; i < classes.length; i++) {
+            // classes[i].classList.add('roomrevert');
+            // }
+            // var card = document.querySelectorAll(".card")
+            // for ( i = 0; i < card.length; i++) {
+            // card[i].classList.add('cardrevert');
+            // }
+            // document.querySelector("select").classList.add("inputrevert")
+            flag=1;
+        }else{
+            document.body.classList.remove("revert");
+            
+            var inputs = document.querySelectorAll("select")
+            for (var i = 0; i < inputs.length; i++) {
+            inputs[i].classList.remove('inputrevert');
+            }
+            // var classes = document.querySelectorAll(".room")
+            // for ( i = 0; i < classes.length; i++) {
+            // classes[i].classList.remove('roomrevert');
+            // }
+            // var card = document.querySelectorAll(".card")
+            // for ( i = 0; i < card.length; i++) {
+            // card[i].classList.remove('cardrevert');
+            // }
+            flag=0;
+        }
+        })
+
+
         function egg() {
             alert("I see you've found the easter egg! hmm... All i wanna say is that You're a really nice person! Have a great day buddy :)")
         }              
+
     </script>
     
     
